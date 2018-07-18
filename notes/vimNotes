@@ -1,0 +1,30 @@
+[fugitive]
+	Gwrite = g add
+	Gread = g co
+	Gmove = renames the file
+	Gremove = deletes the file
+	Gcommit = opens the commit window
+		nice because it allows autocomplet
+			ctr-n
+	Gblame = makes a nice windo split; keeps synhighl
+
+	inside status, can do patch with p
+	enter to open file
+
+	Gdiff
+		top chuck is head or target branch
+		diffget do
+		diffput dp
+		diffupdate to fix color
+		can jump around with [c and ]c
+		:only to close
+		also good for merge conflits
+			tar|working|merge
+			identify buffers by :ls
+				in fug; tar = ///2; merg = //3
+					ex) diffget //2
+			call diffget # from inside working
+			or call getput from inside a diff
+			call Gwrite to close and commit
+			could also call Gwrite! in a targ or merg\\
+				to keep only one side

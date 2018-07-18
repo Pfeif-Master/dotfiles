@@ -1,0 +1,113 @@
+[install]
+depenacies:
+fist add ppa:aguignard/ppa
+
+libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm-dev
+
+from https://github.com/Airblader/i3/wiki/Compiling-&-Installing#debian-stretch:
+# clone the repository
+git clone https://www.github.com/Airblader/i3 i3-gaps
+cd i3
+
+# compile & install
+autoreconf --force --install
+rm -rf build/
+mkdir -p build && cd build/
+
+# Disabling sanitizers is important for release versions!
+# The prefix and sysconfdir are, obviously, dependent on the distribution.
+../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+make
+sudo make install
+
+[Transparent terminal]
+installed compton and nitrogen
+at end of i3 config file
+	exec compton
+	exec nitrogen --restore
+
+[demenu]
+	install package dmenu
+
+[japanese]
+	with anthy already installed run $ibus-setup
+		^ became buggy
+	mozc-> https://wiki.gentoo.org/wiki/How_to_read_and_write_in_Japanese
+		sudo apt-get insall ibus-mozc
+		add to ~/.xprofile
+			export GTK_IM_MODULE=ibus
+			export QT_IM_MODULE=ibus
+			export XMODIFIERS=@im=ibus
+			ibus-daemon -drx
+		ibus-setup
+	^^^^^all of the above did not work
+		use fcitx and mozc instead
+[locking]
+	unity is using gnome-screensaver
+	want to start it in i3config
+	lock with gnome-screensaver-command-l
+		ugly, need to fix
+	xautolock is a lead for auto suspend
+		https://bbs.archlinux.org/viewtopic.php?id=208699
+	!better option at https://github.com/pavanjadhaw/betterlockscreen
+	!better https://www.reddit.com/r/unixporn/comments/7bk4ms/i3lock_i_made_yet_another_i3lock_fork_this_one/
+	
+
+[fixing keys]
+	lead with link in vid2
+
+[wallpapers]
+	lead feh
+	lead on greeter background
+		edit /etc/lightdm/unity-greeter.conf : background=...
+
+[monitors and res]
+	lead xrandr
+	gui arandr
+		use save to export a xrandr command to use in i3 config
+
+[config start up]
+	need to know the class of a window
+		$xprop
+	in config: assign [class="jkl"] $w2
+
+[icons and fonts]
+	need a fount
+		lead in vid2
+		font-Awesome
+	make a .fonts directory under ~
+	move .ttf files there
+	system fonts
+		yosemiteSanFranciscoFont
+
+[GDK]
+	install lxappearance
+	moved config file to dotfile repo
+
+[fix nautilus]
+	$gsettings set org.gnome.desktop.background show-desktop-icons false
+
+[dmenu replacement]
+	install rofi
+
+[powerline bar]
+        status_command python3 /usr/local/lib/python3.5/dist-packages/powerline/bindings/i3/powerline-i3.py
+		font pango:PowerlineFont 12
+
+		----
+		had to pip3 install
+		sudo pip3 install i3ipc
+		
+[terminator]
+	install terminator
+	config file under: ~/.congig/terminator/config
+	TODO: script to set brightness and reload
+
+[polybar]
+	wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
+	sudo sh -c 'echo "deb http://archive.getdeb.net/ubuntu xenial-getdeb apps" >> /etc/apt/sources.list.d/getdeb.list'
+	sudo apt-get update
+	sudo apt-get install polybar -y
+	config files are ziped in /usr/share/doc/polybar
+	add config and launcher to dotfile repo
+

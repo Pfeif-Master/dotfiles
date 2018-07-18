@@ -1,0 +1,24 @@
+[time]
+	timedatectl set-local-rtc 1 --adjust-system-clock 
+[OSU!]https://www.youtube.com/watch?v=d4NysKcDkuc
+	>insall mono
+	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+	echo "deb http://download.mono-project.com/repo/ubuntu stable-xenial main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+	sudo apt-get update
+	sudo apt-get install mono-devel
+	^or just sudo apt-get install mono-complete; but this will not get you msbuild
+
+	>clone osu
+	git clone https://github.com/ppy/osu
+	cd osu/
+	git submodule init
+	git submodule update --recursive
+
+	wget https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
+		^download nuget.exe
+	mono ./nuget.exe restore
+	xbuild
+		^did not work; use msbuild
+	cd osu.Desktop/bin/Debug/
+	mono 'osu!.exe'
+	

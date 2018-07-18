@@ -1,0 +1,54 @@
+[push]
+	default = simple
+
+[alias]
+	st = status
+	ll = log --stat --abbrev-commit
+	p = log --graph --oneline --decorate --all
+	ci = commit
+	ca = commit --amend
+	cam = commit -a -m
+	cm = commit -m
+	br = branch
+	co = checkout
+	df = diff
+	lola = log --all --graph --decorate --pretty=oneline --abbrev-commit
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+[user]
+	name = Hunter Pfeiffer
+	email = whpfeiff@umich.edu
+[core]
+	autocrlf = false
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = true
+	pager = true
+
+[color "diff"]
+	meta = yellow reverse
+	frag = magenta bold
+	old = red bold
+	new = cyan bold
+	whitespace = blue reverse
+
+[color "status"]
+	added = yellow
+	changed = cyan bold
+	untracked = cyan reverse
+	branch = red
+
+[core]
+	packedGitLimit = 128m
+	packedGitWindowSize = 128m
+	editor = vim
+
+[pack]
+	deltaCachesSize = 128m
+	packSizeLimit = 128m
+	windowMemory = 128m
+[merge]
+	defaultToUpstream = true

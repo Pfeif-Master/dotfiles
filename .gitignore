@@ -1,0 +1,4 @@
+
+*.swp
+
+snakePit/__pycache__/

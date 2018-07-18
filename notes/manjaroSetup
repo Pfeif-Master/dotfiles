@@ -1,0 +1,104 @@
+[compton]
+	find window ids with
+		$ xprop WM_CLASS <click on windo>
+
+[Japanese]
+	ibus-anthy
+	start with ibus-daemon -drx
+		possibly in .xinitrc
+		mozc would be better, but does not build
+[fix time]
+	timedatectl set-local-rtc 1
+
+[fix sound]
+	install pulseaudio
+	pulseaudio --start
+	/etc/modprob.d/alasa-base.conf
+		options snd_hda_intel index=1	
+
+[yaourt]
+	already installed
+	https://www.ostechnix.com/install-yaourt-arch-linux/
+	update with
+		$yaourt -Syu
+	
+	minmize cach
+		pacman -Sc :only stale
+		pacman -Scc : all
+
+	find end of dependacy tree
+		pacman -Qt
+
+	remove recusivly
+		pacman -Rs
+
+
+[change default browser]
+	change in .profile
+	$ yaourt -Rs palemoon-bin
+
+[screen cap]
+	i3-scrot
+		-h help
+		-w active window
+		-s select
+
+[vim]
+	unistalled and installed gvim
+	vundle
+		git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	powerline
+		install python-pip
+		yaourt -S python-pip --noconfirm
+		sudo pip install --upgrade pip
+		sudo pip3 install git+git://github.com/Lokaltog/powerline
+		sudo wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+		sudo wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+		sudo mv PowerlineSymbols.otf /usr/share/fonts/
+		sudo fc-cache -vf /usr/share/fonts/
+		sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
+
+		new vim line: 
+			set rtp+=/usr/lib/python3.6/site-packages/powerline/bindings/vim/
+
+		color-coded
+			yaourt -S cmake --noconfirm
+			yaourt -S llvm40
+				add key; takes a long time; maybe edit build file to use more cores
+					maybe do outside of fish
+
+		YCM
+			yaourt -S clang --noconfirm
+			inside of ycm foulder
+				./install.py --clang-completer
+			[post note] did not work, installed with AUR; maybe edit build file
+				tern is for javascript
+				omnisharp is for C#
+				rm ncurses5-compat-libs from build; remove unneeded depends
+
+[zsh]
+	just run to start config
+	there is a hist file under home
+	autocomplete with compsys2
+
+[Install List]
+	google-chrome
+	discord
+		had to add keys
+			gpg --full-gen-key
+			gpg --recv-keys <key>
+			In order to complete the process it is necessary to import the key(s) from the ‘validpgpkeys’ array into the user’s keyring before calling makepkg. There is a helpful article explaining this process by one of Arch Linux's developer's located here: http://allanmcrae.com/2015/01/two-pgp-keyrings-for-package-management-in-arch-linux/
+	$ yaourt -S gitkraken
+	$ yaourt -S terminator
+		use termite instead!!
+	$ yaourt -S fish
+		$ chsh -s /usr/bin/fish
+	fisherman
+		curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+		fisher edc/bass
+	uninstalled subversion
+	pavucontrol
+	timedate-gui
+
+[osu!]
+	its on the AUR

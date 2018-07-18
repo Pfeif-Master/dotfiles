@@ -1,0 +1,137 @@
+if &shell =~# 'fish$'
+	set shell=sh
+endif
+"Powerline
+set rtp+=/usr/lib/python3.6/site-packages/powerline/bindings/vim/
+set laststatus=2
+set showtabline=1
+set noshowmode
+set t_Co=257
+
+"=Vundle=
+set nocompatible              " be iMproved, required
+set shell=/bin/bash				"for the fish shell
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
+Plugin 'rdnetto/YCM-Generator'
+Plugin 'Valloric/YouCompleteMe'
+"Plugin 'jeaye/color_coded'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'wesQ3/vim-windowswap'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'tpope/vim-commentary'
+Plugin 'pseewald/vim-anyfold'
+Plugin 'dag/vim-fish'
+Plugin 'HerringtonDarkholme/yats.vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'elzr/vim-json'
+" Plugin 'sheerun/vim-polyglot'
+"Plugin 'vhda/verilog_systemverilog.vim'
+set updatetime=250
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+"for YCM
+let g:ycm_confirm_extra_conf = 0
+" let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+"let g:ycm_global_ycm_extra_conf = '/usr/share/vim/vimfiles/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 0
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_max_diagnostics_to_display = 60
+"look into UltiSnips
+
+"for anyfold
+filetype plugin indent on
+syntax on
+let anyfold_activate=10
+set foldlevel=0
+
+"for typescript
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
+"-----------------------------------------------------------
+"https://www.youtube.com/watch?v=XA2WjJbmmoM
+"set nocompatible
+syntax enable
+"fileType plugin on
+
+"finding files
+"set path+=** "can now use :find fileName
+	"if file already open use :b partOfFileName
+
+"TAG Jumping
+command! MakeTags !ctags -R .
+	"may need to apt-get the ctags
+	"use ^] to jump to tag under cursor
+	"use g^] for ambiguous tags
+	"use ^t to tump back up the tag stack
+
+"autocomplete
+	"look at doc in |ins-completion
+	
+	"^x^n for Just the file
+	"^x^f for filenames
+	"^x^] for tags only
+	"^n for anything specified by the 'complete' option
+	"^x s for spell sugestion
+	"can now use ^n and ^p to back and forth in suggestion list
+
+"file browsing
+" let g:netrw_banner=0	"disabel annoying banner
+" let g:netrw_browse_split=4 	"open in prior window
+" let g:netrw_altv=1	"open lplits to the right
+let g:netrw_liststyle=3	"tree view
+"let g:netrw_list_hide=netrw_gitignore#Hide()
+"let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+	"now we can
+	":edit a folder to open a file browser
+	"<CR>/v/t to open in an h-split/v-split/tab
+	"check |netrw-browse-maps\ for more mappings
+
+"------------------------------------------------------------
+set mouse=a " mouse controls
+set backspace=2
+set backspace=indent,eol,start
+set relativenumber
+set number
+set wildmenu
+set showmatch
+set incsearch           " search as characters are entered
+set hlsearch            " highlight matches
+nnoremap <silent> <C-l> :nohl<CR><C-l> " <Ctrl-l> redraws the screen and removes any search highlighting.
+" set foldenable          " enable folding
+set foldlevelstart=10   " open most folds by default
+" set foldnestmax=10      " 10 nested fold max
+" set foldmethod=syntax
+set autoindent
+set noexpandtab
+set tabstop=4
+set shiftwidth=4
+"set clipboard=unnamed
+set clipboard=unnamedplus
+set bg=dark
+"clom 80 indication
+highlight ColorColumn ctermbg=red
+call matchadd('ColorColumn', '\%81v', 100)
+syntax on
+hi Visual ctermbg=darkgreen "Visual mode highlighting
+set autoread 	
+au CursorHold * checktime "should refesh if external change is made
+imap kjkj <ESC>
+"setlocal spell spelllang=en_us
