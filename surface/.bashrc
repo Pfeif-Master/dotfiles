@@ -2,25 +2,35 @@
 # ~/.bashrc
 #
 
-YELLOW="\033[1;33m"
-GREEN="\033[1;32m"
-CYAN="\033[1;36m"
-BLUE="\033[1;34m"
-RED="\033[1;31m"
-COLOREND="\033[0m"
+YELLOW="\[\033[1;33m\]"
+GREEN="\[\033[1;32m\]"
+CYAN="\[\033[1;36m\]"
+BLUE="\[\033[1;34m\]"
+RED="\[\033[1;31m\]"
+COLOREND="\[\033[m\]"
+
+E_YELLOW="\033[1;33m"
+E_GREEN="\033[1;32m"
+E_CYAN="\033[1;36m"
+E_BLUE="\033[1;34m"
+E_RED="\033[1;31m"
+E_COLOREND="\033[m"
 
 #start greeter
 #set_color bryellow
-echo -ne $YELLOW
+echo -ne "${E_YELLOW}"
 cat ~/dotfiles/surface/art1
-#set_color brgreen
-echo -ne $GREEN
-echo "システムスタート"
-echo -ne $COLOREND
+echo -e "${E_GREEN}システムスタート${E_COLOREND}"
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
 
 #prompt
 source ~/posh-git-sh/git-prompt.sh
-PROMPT_COMMAND='__posh_git_ps1 "${GREEN}\u${COLOREND}の${CYAN}\h🐾${COLOREND}" "${YELLOW}\w${COLOREND}\n${YELLOW}Ϣ ${COLOREND}";'$PROMPT_COMMAND
+PROMPT_COMMAND='__posh_git_ps1 "${GREEN}\u${COLOREND}の${CYAN}\h🐾${COLOREND}" "${YELLOW}\w\n\[\033[m\]${YELLOW}Ϣ  \[\033[m\]";'$PROMPT_COMMAND
+
+# PROMPT_COMMAND='__posh_git_ps1 "\033[1;36m\u⚔ \033[1;32m@\h⛩ \033[m" " \033[1;33m\w \nϢ  \[\033[m\]";'$PROMPT_COMMAND
 
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
@@ -31,10 +41,21 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+alias ..="cd ../"
+alias ...="cd ../../"
+alias ....="cd ../../../"
+alias .....="cd ../../../../"
+alias ......="cd ../../../../../"
+alias .......="cd ../../../../../../"
+
 alias g="git"
 alias meow="source ~/.bashrc"
 alias python="python3"
 alias pip="pip3"
+
+alias edit_bash="vim ~/.bashrc"
+alias edit_vim="vim ~/_vimrc"
+alias edit_git="vim ~/.gitconfig"
 
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
@@ -103,10 +124,11 @@ function colors {
 	done
 }
 
+function mkdird {
+	mkdir $1
+	cd $1
+}
+
 #finsh greeter
-#set_color brcyan
-echo -ne $CYAN
-echo "おかえり"
-echo "何をしたいですか"
-#set_color normal
-echo -ne $COLOREND
+echo -e "${E_CYAN}おかえり"
+echo -e "何をしたいですか${E_COLOREND}"
