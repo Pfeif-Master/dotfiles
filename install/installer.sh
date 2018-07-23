@@ -1,16 +1,18 @@
 #!/bin/sh
 #update system
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get dist-upgrade
+sudo apt update
+sudo apt upgrade
+sudo apt dist-upgrade
 
 #most used programs 
-sudo apt-get install vim-gnome -y
-sudo apt-get install tmux -y
-sudo apt-get install tmuxinator -y
-sudo apt-get install htop -y
-sudo apt-get install xournal -y
-sudo apt-get install python3-pip -y #python
+sudo apt install vim-gnome -y
+sudo apt install tmux -y
+sudo apt install tmuxinator -y
+sudo apt install htop -y
+sudo apt install xournal -y
+sudo apt install python3-pip -y #python
+sudo apt install w3m -y
+sudo apt install neofetch -y
 sudo pip3 install --upgrade pip
 sudo snap install gitkraken
 sudo snap install discord
@@ -30,12 +32,12 @@ sudo snap install zenkit
 # mpsyoutube
 sudo pip3 install mps-youtube
 sudo pip3 install youtube-dl
-sudo apt-get install mpv -y 
+sudo apt install mpv -y 
 
 # YCM
-sudo apt-get install build-essential cmake -y
-sudo apt-get install python-dev python3-dev -y
-sudo apt-get install npm -y #optional for js and ts
+sudo apt install build-essential cmake -y
+sudo apt install python-dev python3-dev -y
+sudo apt install npm -y #optional for js and ts
 
 #other
 #sudo apt-get install gsmartcontrol -y #for inspecting SSD helth
@@ -58,4 +60,4 @@ sudo apt-get install npm -y #optional for js and ts
 # sudo apt-get install liblua5.5-dev lua5.5
 
 #clean up
-sudo apt-get autoremove -y
+sudo apt autoremove -y
