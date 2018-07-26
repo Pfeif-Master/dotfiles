@@ -11,7 +11,7 @@ sudo apt install tmuxinator -y
 sudo apt install htop -y
 sudo apt install xournal -y
 sudo apt install python3-pip -y #python
-sudo apt install w3m -y
+sudo apt install nitrogen -y
 sudo apt install neofetch -y
 sudo pip3 install --upgrade pip
 sudo snap install gitkraken

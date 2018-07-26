@@ -3,3 +3,7 @@
 	vim-gnome
 	git
 	python3-pip
+	nautilus-image-converter
+
+[configs]
+	posh git
