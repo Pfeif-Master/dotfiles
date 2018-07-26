@@ -9,19 +9,19 @@ sudo apt install vim-gnome -y
 sudo apt install tmux -y
 sudo apt install tmuxinator -y
 sudo apt install htop -y
-sudo apt install xournal -y
+# sudo apt install xournal -y
 sudo apt install python3-pip -y #python
 sudo apt install nitrogen -y
 sudo apt install neofetch -y
 sudo pip3 install --upgrade pip
 sudo snap install gitkraken
-sudo snap install discord
-sudo snap install zenkit
+# sudo snap install discord
+# sudo snap install zenkit
 
 # mpsyoutube
-sudo pip3 install mps-youtube
-sudo pip3 install youtube-dl
-sudo apt install mpv -y 
+# sudo pip3 install mps-youtube
+# sudo pip3 install youtube-dl
+# sudo apt install mpv -y 
 
 # YCM
 sudo apt install build-essential cmake -y
@@ -30,6 +30,7 @@ sudo apt install npm -y #optional for js and ts
 
 # zsh
 sudo apt install zsh -y
+sudo apt install curl -y
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
@@ -38,11 +39,11 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 #sudo apt-get install python3-testresources -y
 ##sudo pip3 install git+git://github.com/Lokaltog/powerline
 #pip install --user git+git://github.com/Lokaltog/powerline
-#sudo wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
-#sudo wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
-#sudo mv PowerlineSymbols.otf /usr/share/fonts/
-#sudo fc-cache -vf /usr/share/fonts/
-#sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
+sudo wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+sudo wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+sudo mv PowerlineSymbols.otf /usr/share/fonts/
+sudo fc-cache -vf /usr/share/fonts/
+sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 
 #other
 #sudo apt-get install gsmartcontrol -y #for inspecting SSD helth
