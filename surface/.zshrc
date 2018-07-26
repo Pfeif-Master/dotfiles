@@ -106,7 +106,6 @@ alias ......="cd ../../../../../"
 alias .......="cd ../../../../../../"
 
 alias g="git"
-alias zzz="source ~/.zshrc"
 alias python="python3"
 alias pip="pip3"
 
