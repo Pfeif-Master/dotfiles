@@ -1,23 +1,15 @@
-YELLOW="\[\033[1;33m\]"
-GREEN="\[\033[1;32m\]"
-CYAN="\[\033[1;36m\]"
-BLUE="\[\033[1;34m\]"
-RED="\[\033[1;31m\]"
-COLOREND="\[\033[m\]"
-
-E_YELLOW="\033[1;33m"
-E_GREEN="\033[1;32m"
-E_CYAN="\033[1;36m"
-E_BLUE="\033[1;34m"
-E_RED="\033[1;31m"
-E_COLOREND="\033[m"
+YELLOW="[1;33m"
+GREEN="[1;32m"
+CYAN="[1;36m"
+BLUE="[1;34m"
+RED="[1;31m"
+COLOREND="[m"
 
 #start greeter
 #set_color bryellow
-echo -ne "${E_YELLOW}"
+echo -ne "${YELLOW}"
 cat ~/dotfiles/surface/art1
-echo -e "${E_GREEN}システムスタート${E_COLOREND}"
-
+echo -e "${GREEN}システムスタート${E_COLOREND}"
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -28,7 +20,11 @@ unsetopt appendhistory autocd beep notify
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
+source ~/posh-git-sh/git-prompt.sh
+PROMPT_COMMAND='__posh_git_ps1 "%B%F{green}%n%f%bの%B%F{cyan}%M🐾%f%b" "%B%F{yellow}%~
+%f%b%B%F{yellow}Ϣ  %b%f";'$PROMPT_COMMAND
+precmd() { eval "$PROMPT_COMMAND" }
 
 #finsh greeter
-echo -e "${E_CYAN}おかえり"
-echo -e "何をしたいですか${E_COLOREND}"
+echo -e "${CYAN}おかえり"
+echo -e "何をしたいですか${COLOREND}"

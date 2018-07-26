@@ -7,3 +7,6 @@
 
 [configs]
 	posh git
+
+[fix posh-git]
+	line: 507; local output => local output=	
