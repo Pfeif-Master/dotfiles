@@ -18,6 +18,19 @@ sudo snap install gitkraken
 sudo snap install discord
 sudo snap install zenkit
 
+# mpsyoutube
+sudo pip3 install mps-youtube
+sudo pip3 install youtube-dl
+sudo apt install mpv -y 
+
+# YCM
+sudo apt install build-essential cmake -y
+sudo apt install python-dev python3-dev -y
+sudo apt install npm -y #optional for js and ts
+
+# zsh
+sudo apt install zsh -y
+
 #NOTE use airline plugin instead
 #powerline
 #sudo apt-get install python3-testresources -y
@@ -28,16 +41,6 @@ sudo snap install zenkit
 #sudo mv PowerlineSymbols.otf /usr/share/fonts/
 #sudo fc-cache -vf /usr/share/fonts/
 #sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
-
-# mpsyoutube
-sudo pip3 install mps-youtube
-sudo pip3 install youtube-dl
-sudo apt install mpv -y 
-
-# YCM
-sudo apt install build-essential cmake -y
-sudo apt install python-dev python3-dev -y
-sudo apt install npm -y #optional for js and ts
 
 #other
 #sudo apt-get install gsmartcontrol -y #for inspecting SSD helth
