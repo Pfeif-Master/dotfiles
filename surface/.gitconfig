@@ -15,7 +15,7 @@
 	lola = log --all --graph --decorate --pretty=oneline --abbrev-commit
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit
 [user]
-	name = Hunter Pfeiffer
+	name = hunter_cat
 	email = whpfeiff@umich.edu
 [core]
 	autocrlf = false
