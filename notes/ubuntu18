@@ -10,3 +10,6 @@
 
 [fix posh-git]
 	line: 507; local output => local output=	
+
+[fix time]
+	timedatectl set-local-rtc 1 --adjust-system-clock
