@@ -1,4 +1,4 @@
-'''bash
+```bash
 sudo apt install git
 #if you want website repo than add key to git lab
 ssh-keygen -t rsa -C "your.email@example.com" -b 4096
@@ -8,3 +8,4 @@ ssh-keygen -t rsa -C "your.email@example.com" -b 4096
 ./autoInstall.sh -t
 #run auto install 
 ./autoInstall.sh -r
+```
