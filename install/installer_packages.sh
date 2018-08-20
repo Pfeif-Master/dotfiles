@@ -4,7 +4,7 @@ sudo apt update
 sudo apt upgrade
 
 #most used programs 
-sudo apt install vim-gnome
+sudo apt install vim-gnome -y
 sudo apt install tmux -y
 sudo apt install tmuxinator -y
 sudo apt install htop -y
