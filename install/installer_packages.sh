@@ -2,18 +2,18 @@
 #update system
 sudo apt update
 sudo apt upgrade
-sudo apt dist-upgrade
 
 #most used programs 
-sudo apt install vim-gnome -y
+sudo apt install vim-gnome
 sudo apt install tmux -y
 sudo apt install tmuxinator -y
 sudo apt install htop -y
 sudo apt install xournal -y
 sudo apt install python3-pip -y #python
+sudo pip3 install --upgrade pip
+sudo pip3 install colorama
 sudo apt install nitrogen -y
 sudo apt install neofetch -y
-sudo pip3 install --upgrade pip
 sudo snap install gitkraken
 sudo snap install discord
 sudo snap install zenkit
@@ -38,19 +38,21 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 #sudo apt-get install python3-testresources -y
 ##sudo pip3 install git+git://github.com/Lokaltog/powerline
 #pip install --user git+git://github.com/Lokaltog/powerline
-#sudo wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
-#sudo wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
-#sudo mv PowerlineSymbols.otf /usr/share/fonts/
-#sudo fc-cache -vf /usr/share/fonts/
-#sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
+sudo wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+sudo wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+sudo mv PowerlineSymbols.otf /usr/share/fonts/
+sudo fc-cache -vf /usr/share/fonts/
+sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 
 #other
 #sudo apt-get install gsmartcontrol -y #for inspecting SSD helth
 #sudo apt-get install ibus-anthy -y #for japanese
+# sudo apt-get install ibus-mozc -y #for japanese
+sudo apt install fcitx-mozc -y
 
 #apt-get install compizconfig-settings-manager compiz-plugins-extra -y
-#sudo apt-get install gnome-tweak-tool -y
-#sudo apt-get install steam -y
+sudo apt install gnome-tweak-tool -y
+# sudo apt-get install steam -y
 
 # color coded, assumes you need lua 5.5
 # sudo apt-get install build-essential libclang-3.9-dev libncurses-dev libz-dev cmake xz-utils libpthread-workqueue-dev -y
