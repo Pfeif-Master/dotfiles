@@ -2,7 +2,6 @@ import sys
 import os
 import copy
 import subprocess
-from loadingBar import printBar
 
 if len(sys.argv) != 4:
     print("bad arguments: arg[1]: source; arg[2]: targ; arg[3]: t|r")
@@ -14,6 +13,7 @@ if sys.argv[3] == "t":
     dryrun = True
 elif sys.argv[3] == "r":
     dryrun = False
+    from loadingBar import printBar
 else:
     print("arg[3] must be t (dryrun) or r (real run)")
     print(sys.argv[3])
@@ -34,10 +34,10 @@ while i < len(srcs):
     RMcommand = "rm -r" + " " + targ + "/" + justName[i];
     command = "ln -srf " + srcs[i] + " " + targ;
     msg = "Linking " + srcs[i] + " in " + targ;
-    printBar(msg, i, len(srcs) - 1);
     if dryrun:
-        print("Dryrun mode{ " + command + " } was called");
+        print("Dryrun mode{ " + command + " }");
     else:
         #subprocess.check_call(RMcommand.split())
+        printBar(msg, i, len(srcs) - 1);
         subprocess.check_call(command.split())
     i += 1;
