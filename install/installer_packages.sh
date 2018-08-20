@@ -32,6 +32,7 @@ sudo apt install npm -y #optional for js and ts
 sudo apt install zsh -y
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+sudo chsh -s /bin/zsh
 
 #NOTE use airline plugin instead
 #powerline
