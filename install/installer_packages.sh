@@ -30,6 +30,7 @@ sudo apt install npm -y #optional for js and ts
 
 # zsh
 sudo apt install zsh -y
+sudo apt install curl -y
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 sudo chsh -s /bin/zsh
