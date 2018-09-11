@@ -41,7 +41,7 @@ filetype plugin indent on    " required
 let g:ale_set_balloons = 0
 let g:ale_completion_enabled = 0
 let g:ale_linters = {
-            \   'verilog': ['iverilog'],
+            \   'verilog': ['verilator'],
             \   'vim': ['vint'],
             \}
 let g:ale_linters_explicit = 1
