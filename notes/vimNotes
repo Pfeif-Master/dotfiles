@@ -28,3 +28,14 @@
 			call Gwrite to close and commit
 			could also call Gwrite! in a targ or merg\\
 				to keep only one side
+
+[ale]
+	[auto completion]
+	[hover]
+	[linting]
+		[vim]
+			vint
+				sudo pip install vim-vint
+		[c\c++]
+			sudo apt install clang
+		[verilog]
