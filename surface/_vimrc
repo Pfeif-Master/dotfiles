@@ -18,7 +18,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 " Plugin 'scrooloose/nerdtree'
 " Plugin 'rdnetto/YCM-Generator'
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 " Plugin 'jeaye/color_coded'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'wesQ3/vim-windowswap'
@@ -54,14 +54,14 @@ let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts = 1
 
 "for YCM
-"let g:ycm_confirm_extra_conf = 0
-"" let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
-""let g:ycm_global_ycm_extra_conf = '/usr/share/vim/vimfiles/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-"let g:ycm_add_preview_to_completeopt = 1
-"let g:ycm_autoclose_preview_window_after_insertion = 1
-"let g:ycm_autoclose_preview_window_after_completion = 0
-"let g:ycm_seed_identifiers_with_syntax = 1
-"let g:ycm_max_diagnostics_to_display = 60
+let g:ycm_confirm_extra_conf = 0
+" let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+"let g:ycm_global_ycm_extra_conf = '/usr/share/vim/vimfiles/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 0
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_max_diagnostics_to_display = 60
 "look into UltiSnips
 
 "for anyfold
