@@ -12,21 +12,22 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'w0rp/ale'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
-Plugin 'rdnetto/YCM-Generator'
+" Plugin 'scrooloose/nerdtree'
+" Plugin 'rdnetto/YCM-Generator'
 Plugin 'Valloric/YouCompleteMe'
 " Plugin 'jeaye/color_coded'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'wesQ3/vim-windowswap'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-commentary'
-Plugin 'pseewald/vim-anyfold'
+" Plugin 'pseewald/vim-anyfold'
 " Plugin 'dag/vim-fish'
-Plugin 'HerringtonDarkholme/yats.vim'
-Plugin 'leafgarland/typescript-vim'
+" Plugin 'HerringtonDarkholme/yats.vim'
+" Plugin 'leafgarland/typescript-vim'
 Plugin 'elzr/vim-json'
 " Plugin 'sheerun/vim-polyglot'
 "Plugin 'vhda/verilog_systemverilog.vim'
@@ -35,6 +36,17 @@ set updatetime=250
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+"for ale
+let g:ale_set_balloons = 0
+let g:ale_completion_enabled = 0
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_insert_leave = 1
+let g:ale_linters = {
+            \   'verilog': ['verilator'],
+            \   'vim': ['vint'],
+            \}
+let g:ale_linters_explicit = 1
 
 "for powerline
 " let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
