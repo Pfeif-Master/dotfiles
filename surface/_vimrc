@@ -118,7 +118,7 @@ set foldlevelstart=10   " open most folds by default
 " set foldnestmax=10      " 10 nested fold max
 " set foldmethod=syntax
 set autoindent
-set noexpandtab
+set expandtab
 set tabstop=4
 set shiftwidth=4
 "set clipboard=unnamed
@@ -133,3 +133,5 @@ set autoread
 au CursorHold * checktime "should refesh if external change is made
 imap kjkj <ESC>
 "setlocal spell spelllang=en_us
+"search for selected
+vnoremap // y/<C-R>"<CR> 
