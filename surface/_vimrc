@@ -16,7 +16,7 @@ Plugin 'w0rp/ale'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
-" Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 " Plugin 'rdnetto/YCM-Generator'
 Plugin 'Valloric/YouCompleteMe'
 " Plugin 'jeaye/color_coded'
@@ -47,6 +47,8 @@ let g:ale_linters = {
             \   'vim': ['vint'],
             \}
 let g:ale_linters_explicit = 1
+
+let g:ale_verilog_verilator_options= '-sv --default-language "1800-2017"'
 
 "for powerline
 " let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
