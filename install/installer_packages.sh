@@ -8,20 +8,20 @@ sudo apt install vim-gnome -y
 sudo apt install tmux -y
 sudo apt install tmuxinator -y
 sudo apt install htop -y
-sudo apt install xournal -y
+#sudo apt install xournal -y
 sudo apt install python3-pip -y #python
 sudo pip3 install --upgrade pip
 sudo pip3 install colorama
-sudo apt install nitrogen -y
+#sudo apt install nitrogen -y
 sudo apt install neofetch -y
-sudo snap install gitkraken
-sudo snap install discord
-sudo snap install zenkit
+#sudo snap install gitkraken
+#sudo snap install discord
+#sudo snap install zenkit
 
 # mpsyoutube
-sudo pip3 install mps-youtube
-sudo pip3 install youtube-dl
-sudo apt install mpv -y 
+#sudo pip3 install mps-youtube
+#sudo pip3 install youtube-dl
+#sudo apt install mpv -y 
 
 # YCM
 sudo apt install build-essential cmake -y
@@ -50,7 +50,7 @@ sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 #sudo apt-get install gsmartcontrol -y #for inspecting SSD helth
 #sudo apt-get install ibus-anthy -y #for japanese
 # sudo apt-get install ibus-mozc -y #for japanese
-sudo apt install fcitx-mozc -y
+#sudo apt install fcitx-mozc -y
 
 #apt-get install compizconfig-settings-manager compiz-plugins-extra -y
 sudo apt install gnome-tweak-tool -y
