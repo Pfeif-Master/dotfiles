@@ -15,8 +15,8 @@
 	lola = log --all --graph --decorate --pretty=oneline --abbrev-commit
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit
 [user]
-	name = hunter_cat
-	email = whpfeiff@umich.edu
+	name = Hunter_Pfeiffer
+	email = hpfeiffer@dcscorp.com
 [core]
 	autocrlf = false
 
@@ -42,13 +42,10 @@
 	branch = red
 
 [core]
-	packedGitLimit = 128m
-	packedGitWindowSize = 128m
 	editor = vim
 
-[pack]
-	deltaCachesSize = 128m
-	packSizeLimit = 128m
-	windowMemory = 128m
 [merge]
 	defaultToUpstream = true
+
+[diff]
+	submodule = log

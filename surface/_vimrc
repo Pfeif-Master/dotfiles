@@ -12,6 +12,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'othree/xml.vim'
 Plugin 'w0rp/ale'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -68,10 +69,10 @@ let g:ycm_goto_buffer_command = 'split'
 "look into UltiSnips
 
 "for anyfold
-filetype plugin indent on
-syntax on
-let anyfold_activate=10
-set foldlevel=0
+" filetype plugin indent on
+" syntax on
+" let anyfold_activate=10
+" set foldlevel=0
 
 "for typescript
 autocmd QuickFixCmdPost [^l]* nested cwindow
@@ -127,14 +128,14 @@ set showmatch
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 nnoremap <silent> <C-l> :nohl<CR><C-l> " <Ctrl-l> redraws the screen and removes any search highlighting.
-" set foldenable          " enable folding
-set foldlevelstart=10   " open most folds by default
+set foldenable          " enable folding
+" set foldlevelstart=10   " open most folds by default
 " set foldnestmax=10      " 10 nested fold max
 " set foldmethod=syntax
 set autoindent
 set expandtab
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 "set clipboard=unnamed
 set clipboard=unnamedplus
 set bg=dark
