@@ -1,0 +1,117 @@
+=MSG TAGS=======================================================================
+  NOTE THESE ARE NOT GIT TAGS!!!
+  I like to begin all of my commit messages with a short tag followed by a ':'
+  then a more detailed description. This makes for a very neat print of the repo
+  as seen in the example below. The intent of these tags is not to be restrictive
+  or all inclusive, but to give the reader an idea of the overall goal of each 
+  commit. It also makes it easier to search the printout for keywords.
+
+  Some teams like all the tags to be the same size for better alignment.
+
+    ADD: -> The main goal of this commit is to add something. i.e. new feature,
+            function, or class.
+    RM: | RMM: -> The main goal of this commit is to remove something.
+    MOD: -> The main goal of this commit is to modify something. Very useful for
+            config files. May also be used when rewriting a feature.
+    BUG: -> a bug was found, may or may not be from the changes in this commit.
+          The msg should describe the bug
+    FIX: -> This commits attempts to fix a bug, it may or may not work. It is common
+          to see multiple FIX: in a row with the last one begin the real fixed state.
+          Most of the time FIX: tags follow a BUG: tag, but not always
+    WIP: -> WorkInProgress. This tag is used to signal that commit has not
+          completed a full goal. Is often used when a developer needs to sync code
+          between two computers or wants to "hard stash" their progress. These commits
+          are almost always eventually squashed out and never seen on the master branch.
+    STABLE: | STB: -> The developer is marking this commit as a stable build for blank,
+          and that it is a good point for creating new branches off of. [Its the dev's
+          way of say it just works here and don't touch it]. These commits often
+          double as FIX: or ADD: commit.
+    SQ: | SQH: -> alternative to WIP: The developer is marking that this commit should
+          be squashed. These commits are rarely pushed and mostly only seen on a local
+          repo.
+    RENAME: | RNE: -> this commit ONLY renames files. When renaming files please do it
+          as a separate commit than editing the file. This makes life easier latter on.
+
+    These last two tags are not liked by some teams.
+      NEW: -> alternative to ADD: that marks a new file being added to the repo.
+              Often used when copying in files.
+      INIT: -> alternative to ADD: + WIP: used to say this is my first commit 
+            towards a goal.
+
+  I often follow the tag with a grouping with ';'s to give context to the msg. For example:
+                  ADD: start up; now reads conf file
+
+  Also remember that commit message should be short (< 50 chars). This limit is 
+  only for the fist line of the message. More detail can still be added to the msg
+  on the following lines. These lines should wrap at < 75 chars. The reason for 
+  the limit is to allow nice printouts when viewing the commit latter. Make 
+  sure there is a full blank line between the first and second line. When a 
+  commit message is more than 1 line I add a '+' before the tag.
+                  +ADD: start up; now reads conf file
+
+  I always start my repos with an 'Empty Commit'. This makes advance git features
+  easier to use latter on in the project. The command I use to make this commit
+  is:
+                git commit --allow-empty -m "INIT COMMIT"
+
+  Below is an example printout of my private dotefile repo. The main thing is to
+  Keep the commit messages short and add what ever tag feels best. The rest of
+  the message is the real descriptor.
+
+=EXAMPLE========================================================================
+* 1427150 (origin/i3) ADD: config for terminator over termite
+* e28ffee MOD: mod4 (wind) over alt; transparent
+* 0f1477b ADD: i3 config default
+| * faa9764 (HEAD -> tank, origin/tank) MOD: .gitconfig and _vimrc for tank
+| * 75bceae MOD: packages for tank config
+|/  
+* df4a284 (origin/master, origin/HEAD, master) MOD: vim; ale; verilog
+*   c57a979 Merge remote-tracking branch 'github/master'
+|\  
+| * ecc078d Revert "MOD: turn tabline backon"
+| * 5ff95b5 FIX: ale overwrite ycm
+| * 8440f07 MOD: turn ycm back on
+| * 12f8d81 ADD: verilog linting
+| * 4d1ec1a Revert "MOD: turn ycm back on"
+| * 6e81e91 WIP: ale
+| * de34828 MOD: turn ycm back on
+| * 9e35f68 MOD: turn tabline backon
+| * 031a5d6 RM: YCM and other typescript plugins
+| * 53aca5c FIX: add curl to install list to fix zsh
+| * b5268df MOD: README
+* | bdcfa5a VIM: tab as 4 spaces
+* | cc76fd0 YCM: goto command
+|/  
+* 1deef30 FIX: missing -y in install
+* 04a9fb8 FIX: can run link test befor pip is installed
+* 28ee5ab ADD: seperate folder for i3 configs
+* c94f22f ADD: chsh zsh
+* 48fbf34 FIX: README
+* 159bfd7 NEW: auto install script
+* 6079bad MOD: installer.sh in prep for autoinstall script
+* edd2f61 NEW: README
+* 4ba453b (origin/zsh-dev) RM: tabline
+* 42e6a63 FIX: vim tabline
+* bd69b6f ADD: note on fixing time conflict
+* 90634d6 MOD: git name
+| * b6c4925 (origin/work) MOD: what was used at work vm
+|/  
+* 218df89 ADD: zsh; fish like completions
+* dfb7189 RM: zzz; reloading zshrc is broken
+* b275a5a ADD: zsh; items from bashrc
+* 3715f6d MOD: zsh; trim off some features
+* 37760f6 ADD: oh-my-zsh
+* 4e022c5 ADD: zsh; prompt
+* 9a2bda9 ADD: zsh; greeter
+* 4a49271 INIT: zsh
+* 9528353 ADD: nitrogen to install script
+* c54bf54 ADD: neofetch config
+* 9d3b04e ADD: config folder from old repo
+* 0474ca9 MOD: apt instead of apt-get
+* bd13a68 FIX: buggy lines due to color
+* 21fb6ff Major bashrc over haul; new prompt
+* 5e0d109 MOD: replace powerline with airling
+* 8ec6a5f MOD: install script for ubuntu 2018
+* af8a751 MOD: install script for ubuntu 2018
+* c6998a5 ADD: starting point from myJar branch of old repo
+* 1c48ca7 INIT COMMIT
