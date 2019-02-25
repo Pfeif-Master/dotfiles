@@ -137,10 +137,14 @@ set showmatch
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 nnoremap <silent> <C-l> :nohl<CR><C-l> " <Ctrl-l> redraws the screen and removes any search highlighting.
+"=FOLDING====================================================
 set foldenable          " enable folding
-" set foldlevelstart=10   " open most folds by default
+set foldlevelstart=10   " open most folds by default
 " set foldnestmax=10      " 10 nested fold max
-" set foldmethod=syntax
+set foldmethod=syntax
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
+"============================================================
 set autoindent
 set expandtab
 set tabstop=2
