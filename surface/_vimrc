@@ -12,7 +12,11 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'w0rp/ale'
+" Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'junegunn/vim-easy-align'
+" Plugin 'chrisbra/csv.vim'
+Plugin 'othree/xml.vim'
+" Plugin 'w0rp/ale'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
@@ -25,7 +29,6 @@ Plugin 'wesQ3/vim-windowswap'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-commentary'
 " Plugin 'pseewald/vim-anyfold'
-" Plugin 'dag/vim-fish'
 " Plugin 'HerringtonDarkholme/yats.vim'
 " Plugin 'leafgarland/typescript-vim'
 Plugin 'elzr/vim-json'
@@ -37,18 +40,24 @@ set updatetime=250
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-"for ale
-let g:ale_set_balloons = 0
-let g:ale_completion_enabled = 0
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_insert_leave = 1
-let g:ale_linters = {
-            \   'verilog': ['verilator'],
-            \   'vim': ['vint'],
-            \}
-let g:ale_linters_explicit = 1
+"for cpp colors
+" let g:cpp_class_scope_highlight = 1
+" let g:cpp_member_variable_highlight = 1
+" let g:cpp_class_decl_highlight = 1
+" let g:cpp_experimental_template_highlight = 1
 
-let g:ale_verilog_verilator_options= '-sv --default-language "1800-2017"'
+"for ale
+" let g:ale_set_balloons = 0
+" let g:ale_completion_enabled = 0
+" let g:ale_lint_on_text_changed = 0
+" let g:ale_lint_on_insert_leave = 1
+" let g:ale_linters = {
+"             \   'verilog': ['verilator'],
+"             \   'vim': ['vint'],
+"             \}
+" let g:ale_linters_explicit = 1
+
+" let g:ale_verilog_verilator_options= '-sv --default-language "1800-2017"'
 
 "for powerline
 " let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
@@ -63,8 +72,9 @@ let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 0
 let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_max_diagnostics_to_display = 60
+let g:ycm_max_diagnostics_to_display = 500
 let g:ycm_goto_buffer_command = 'split'
+let g:ycm_path_to_python_interpreter='/usr/bin/python3'
 "look into UltiSnips
 
 "for anyfold
