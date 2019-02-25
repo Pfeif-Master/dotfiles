@@ -1,7 +1,7 @@
 #!/bin/sh
 #ycm
 cd ~/.vim/bundle/YouCompleteMe
-./install.py --clang-completer
+python3 ./install.py --clang-completer
 
 #color Coded
 # cd ~/.vim/bundle/color_coded
