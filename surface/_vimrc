@@ -140,7 +140,10 @@ nnoremap <silent> <C-l> :nohl<CR><C-l> " <Ctrl-l> redraws the screen and removes
 " set foldenable          " enable folding
 set foldlevelstart=10   " open most folds by default
 " set foldnestmax=10      " 10 nested fold max
-" set foldmethod=syntax
+set foldmethod=syntax
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
+"============================================================
 set autoindent
 set expandtab
 set tabstop=4
