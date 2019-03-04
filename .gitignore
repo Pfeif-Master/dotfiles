@@ -2,3 +2,4 @@
 *.swp
 
 snakePit/__pycache__/
+config/polybar/launch
