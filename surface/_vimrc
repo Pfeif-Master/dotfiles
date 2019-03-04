@@ -31,6 +31,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'elzr/vim-json'
 " Plugin 'sheerun/vim-polyglot'
 "Plugin 'vhda/verilog_systemverilog.vim'
+Plugin 'lilydjwg/colorizer'
 set updatetime=250
 
 " All of your Plugins must be added before the following line
