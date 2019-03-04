@@ -30,11 +30,17 @@ i3 --more-version to find locaton of config file
     mpd
 
 [fonts]
+    xfonts-mplus
     [siji]
+        sudo rm /etc/fonts/conf.d/70-no-bitmaps.conf
         git clone https://github.com/stark/siji.git
         cd siji
         ./install.sh -d ~/.fonts
-    xfonts-mplus
+        sudo fc-cache -f -v
+        add these to start up
+            xset +fp /tmp
+            xset fp rehash
+        also had to turn off system fonts on terminator
     
 [Transparent]
     installed compton and nitrogen
