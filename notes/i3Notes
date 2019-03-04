@@ -82,6 +82,8 @@ i3 --more-version to find locaton of config file
     volume updown
     lockscreen
     sleep timer
+    aegis
+    comptun switch transparent modes
 
 
 ==============================================================================================
