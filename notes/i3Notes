@@ -28,6 +28,7 @@ i3 --more-version to find locaton of config file
     arandr
     dmenu
     mpd
+    pavucontrol
 
 [fonts]
     xfonts-mplus
@@ -47,6 +48,9 @@ i3 --more-version to find locaton of config file
     at end of i3 config file
         exec compton
         exec nitrogen --restore
+
+[fix nautilus]
+	$gsettings set org.gnome.desktop.background show-desktop-icons false
 
 [polybar]
     [build]
@@ -71,6 +75,13 @@ i3 --more-version to find locaton of config file
             -- Installing: /usr/local/share/man/man1/polybar.1
             -- Installing: /usr/local/bin/polybar
             -- Installing: /usr/local/bin/polybar-msg
+    will need to make symbolic link missdirect for launch scrpit
+
+[TODO]
+    printscreen
+    volume updown
+    lockscreen
+    sleep timer
 
 
 ==============================================================================================
