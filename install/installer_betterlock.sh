@@ -28,13 +28,15 @@ version=$(git ls-remote --tags https://github.com/pavanjadhaw/betterlockscreen |
 ## Dependencies
 sudo apt install bc imagemagick libjpeg-turbo8-dev libpam0g-dev libxcb-composite0 libxcb-composite0-dev \
     libxcb-image0-dev libxcb-randr0 libxcb-util-dev libxcb-xinerama0 libxcb-xinerama0-dev libxcb-xkb-dev \
-    libxkbcommon-x11-dev feh libev-dev;
+    libxkbcommon-x11-dev feh libev-dev -y;
 printf "\n";
 
 ## Install i3lock-color dependency
-git clone https://github.com/PandorasFox/i3lock-color && cd i3lock-color;
+git clone https://github.com/PandorasFox/i3lock-color ~/install_repos/i3lock-color && cd ~/install_repos/i3lock-color;
 autoreconf -i; ./configure;
 make; sudo checkinstall --pkgname=i3lock-color --pkgversion=1 -y;
+sudo ln -s ~/install_repos/i3lock-color/x86_64-pc-linux-gnu/i3lock /usr/bin/i3lock
+cd -
 # cd .. && sudo rm -r i3lock-color;
 
 printf -- "\n----------------------------------------------------------------------------------------------------";

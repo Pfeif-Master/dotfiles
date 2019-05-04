@@ -184,7 +184,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bindsym $mod+p "betterlockscreen -l"
+bindsym $mod+p exec betterlockscreen -l
 # Set shut down, restart and locking features
 # bindsym $mod+p mode "$mode_system"
 # set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown

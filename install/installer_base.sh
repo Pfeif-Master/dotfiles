@@ -59,13 +59,13 @@ sudo apt install fcitx-mozc -y
 sudo apt autoremove -y
 
 #=SymLinks=====================================================================
-../snakePit/linker.py config/ ~/.config r
-../snakePit/linker.py surface/ ~ r
+../snakePit/linker.py ../config/ ~/.config/ r
+../snakePit/linker.py ../surface/ ~/ r
 
 #=GIT==========================================================================
 mkdir ~/install_repos
-git clone https://github.com/lyze/posh-git-sh.git ~/install_repos #install posh-get
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim #vundle
+git clone https://github.com/lyze/posh-git-sh.git ~/install_repos/posh-git-sh
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 #=VIM==========================================================================
 vim -c 'PluginInstall' -c 'qa'

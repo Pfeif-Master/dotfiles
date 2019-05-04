@@ -127,7 +127,7 @@ bindkey -v
 # End of lines configured by zsh-newuser-install
 
 # promt
-source ~/posh-git-sh/git-prompt.sh
+source ~/install_repos/posh-git-sh/git-prompt.sh
 PROMPT_COMMAND='__posh_git_ps1 "%B%F{green}%n%f%bの%B%F{cyan}%M🐾%f%b" "%B%F{yellow}%~
 %f%b%B%F{yellow}Ϣ  %b%f";'$PROMPT_COMMAND
 precmd() { eval "$PROMPT_COMMAND" }

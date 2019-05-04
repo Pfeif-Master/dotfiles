@@ -39,5 +39,6 @@ while i < len(srcs):
     else:
         #subprocess.check_call(RMcommand.split())
         printBar(msg, i, len(srcs) - 1);
-        subprocess.check_call(command.split())
+        os.system(RMcommand)
+        os.system(command)
     i += 1;
