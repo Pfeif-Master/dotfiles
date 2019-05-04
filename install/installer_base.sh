@@ -52,21 +52,23 @@ sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 # sudo apt-get install ibus-mozc -y #for japanese
 sudo apt install fcitx-mozc -y
 
-#apt-get install compizconfig-settings-manager compiz-plugins-extra -y
-sudo apt install gnome-tweak-tool -y
+# sudo apt install gnome-tweak-tool -y
 # sudo apt-get install steam -y
-
-# color coded, assumes you need lua 5.5
-# sudo apt-get install build-essential libclang-3.9-dev libncurses-dev libz-dev cmake xz-utils libpthread-workqueue-dev -y
-# sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-# sudo apt-get update
-# sudo apt-get install g++-4.9 -y
-# sudo update-alternatives --remove-all g++
-# sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 50 -y
-# sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-# sudo apt-get update
-# sudo apt-get install g++-4.9
-# sudo apt-get install liblua5.5-dev lua5.5
 
 #clean up
 sudo apt autoremove -y
+
+#=SymLinks=====================================================================
+../snakePit/linker.py config/ ~/.config r
+../snakePit/linker.py surface/ ~ r
+
+#=GIT==========================================================================
+mkdir ~/install_repos
+git clone https://github.com/lyze/posh-git-sh.git ~/install_repos #install posh-get
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim #vundle
+
+#=VIM==========================================================================
+vim -c 'PluginInstall' -c 'qa'
+cd ~/.vim/bundle/YouCompleteMe
+python3 ./install.py --clang-completer
+cd -

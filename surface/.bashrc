@@ -27,7 +27,7 @@ echo -e "${E_GREEN}システムスタート${E_COLOREND}"
 shopt -s checkwinsize
 
 #prompt
-source ~/posh-git-sh/git-prompt.sh
+source ~/install_repos/posh-git-sh/git-prompt.sh
 PROMPT_COMMAND='__posh_git_ps1 "${GREEN}\u${COLOREND}の${CYAN}\h🐾${COLOREND}" "${YELLOW}\w\n\[\033[m\]${YELLOW}Ϣ  \[\033[m\]";'$PROMPT_COMMAND
 
 # PROMPT_COMMAND='__posh_git_ps1 "\033[1;36m\u⚔ \033[1;32m@\h⛩ \033[m" " \033[1;33m\w \nϢ  \[\033[m\]";'$PROMPT_COMMAND
