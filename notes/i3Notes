@@ -77,10 +77,24 @@ i3 --more-version to find locaton of config file
             -- Installing: /usr/local/bin/polybar-msg
     will need to make symbolic link missdirect for launch scrpit
 
+[Lockscreen]
+    [betterlockscree]
+        pavanjadhaw/betterlockscreen
+        used the scripted that was added to dotefiles for install
+        need to modify script to correctly install i3lock-colors
+            a simple symbolic link in usr/bin will work
+        betterlockscreen -h
+        
+        Going to make an i3exit script, will need to place it in /usr/bin/
+
+[Other]
+    i3 uses keysyms for keybindings
+    view mappings with: xmodmap -pke
+    view xev
+
 [TODO]
     printscreen
     volume updown
-    lockscreen
     sleep timer
     aegis
     comptun switch transparent modes
