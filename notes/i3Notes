@@ -89,6 +89,14 @@ i3 --more-version to find locaton of config file
             a simple symbolic link in usr/bin will work
         betterlockscreen -h
 
+[gnome]
+    install gnome-flashback:
+        sudo apt install gnome-flashback
+    clone i3+gnome:
+        git clone https://github.com/glsorre/i3-gnome
+        cd in
+        make install
+
 [Other]
     i3 uses keysyms for keybindings
     view mappings with: xmodmap -pke

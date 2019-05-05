@@ -66,8 +66,14 @@ ln -s default.sh launch
 
 cd $RETURN
 
-#=Better Lock===================================================================
+#=Better Lock==================================================================
 ./installer_betterlock.sh
+
+#Gnome Fix all=================================================================
+sudo apt install gnome-flashback -y
+git cone https://github.com/glsorre/i3-gnome ~/install_repos/i3-gnome
+cd ~/install_repos/i3-gnome
+sudo make install
 
 #japanese
 # ibus-setup
