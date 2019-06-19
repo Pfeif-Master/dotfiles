@@ -147,8 +147,8 @@ au FileType xml setlocal foldmethod=syntax
 "============================================================
 set autoindent
 set expandtab
-set tabstop=2
-set shiftwidth=2
+set tabstop=3
+set shiftwidth=3
 "set clipboard=unnamed
 set clipboard=unnamedplus
 set bg=dark
