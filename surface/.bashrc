@@ -50,7 +50,7 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias ginit='git init; git ci --allow-empty -m "INIT COMIT"'
-alias py='python'
+alias py='python3'
 
 alias ..="cd ../"
 alias ...="cd ../../"
@@ -61,8 +61,8 @@ alias .......="cd ../../../../../../"
 
 alias g="git"
 alias meow="source ~/.bashrc"
-alias python="python3"
-alias pip="pip3"
+# alias python="python3"
+# alias pip="pip3"
 
 alias edit_bash="vim ~/.bashrc"
 alias edit_vim="vim ~/_vimrc"
