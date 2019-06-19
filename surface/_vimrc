@@ -34,11 +34,16 @@ Plugin 'tpope/vim-commentary'
 Plugin 'elzr/vim-json'
 " Plugin 'sheerun/vim-polyglot'
 "Plugin 'vhda/verilog_systemverilog.vim'
+Plugin 'luochen1990/rainbow'
 set updatetime=250
+
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+let g:rainbow_active = 1
 
 "for cpp colors
 " let g:cpp_class_scope_highlight = 1
@@ -152,7 +157,7 @@ set shiftwidth=4
 set clipboard=unnamedplus
 set bg=dark
 "clom 80 indication
-highlight ColorColumn ctermbg=red
+highlight ColorColumn ctermbg=blue
 call matchadd('ColorColumn', '\%81v', 100)
 syntax on
 hi Visual ctermbg=darkgreen "Visual mode highlighting
