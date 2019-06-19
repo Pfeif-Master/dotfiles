@@ -17,10 +17,9 @@ export E_RED="\033[1;31m"
 export E_COLOREND="\033[m"
 
 #start greeter
-#set_color bryellow
-echo -ne "${E_CYAN}"
-cat ~/dotfiles/surface/art1
-echo -ne "${E_COLOREND}"
+~/art1.sh
+# echo -ne "${E_CYAN}"
+# cat ~/dotfiles/surface/art1
 # echo -e "${E_GREEN}システムスタート${E_COLOREND}"
 # echo -e "\t\t\t\t${E_CYAN}何お${E_GREEN}シ"
 # echo -e "\t\t\t\t${E_CYAN}をか${E_GREEN}ス"
