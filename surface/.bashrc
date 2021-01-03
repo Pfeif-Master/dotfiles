@@ -1,6 +1,11 @@
 #
 # ~/.bashrc
 #
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
 
 export YELLOW="\[\033[1;33m\]"
 export GREEN="\[\033[1;32m\]"
@@ -17,9 +22,9 @@ export E_RED="\033[1;31m"
 export E_COLOREND="\033[m"
 
 #start greeter
-~/art1.sh
-# echo -ne "${E_CYAN}"
-# cat ~/dotfiles/surface/art1
+#~/art1.sh
+ echo -ne "${E_GREEN}"
+ cat ~/dotfiles/surface/art1
 # echo -e "${E_GREEN}システムスタート${E_COLOREND}"
 # echo -e "\t\t\t\t${E_CYAN}何お${E_GREEN}シ"
 # echo -e "\t\t\t\t${E_CYAN}をか${E_GREEN}ス"
@@ -29,7 +34,7 @@ export E_COLOREND="\033[m"
 # echo -e "\t\t\t\t${E_CYAN}で  ${E_GREEN}タ"
 # echo -e "\t\t\t\t${E_CYAN}す  ${E_GREEN}ー"
 # echo -e "\t\t\t\t${E_CYAN}か  ${E_GREEN}ト"
-# echo -ne "${E_COLOREND}"
+echo -ne "${E_COLOREND}"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
