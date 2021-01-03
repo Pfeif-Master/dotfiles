@@ -12,29 +12,30 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'junegunn/vim-easy-align'
-" Plugin 'chrisbra/csv.vim'
 Plugin 'othree/xml.vim'
-" Plugin 'w0rp/ale'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'rdnetto/YCM-Generator'
 Plugin 'Valloric/YouCompleteMe'
-" Plugin 'jeaye/color_coded'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'wesQ3/vim-windowswap'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-commentary'
+Plugin 'elzr/vim-json'
+Plugin 'luochen1990/rainbow'
+Plugin 'davidhalter/jedi'
+" Plugin 'octol/vim-cpp-enhanced-highlight'
+" Plugin 'sheerun/vim-polyglot'
+" Plugin 'vhda/verilog_systemverilog.vim'
 " Plugin 'pseewald/vim-anyfold'
 " Plugin 'HerringtonDarkholme/yats.vim'
 " Plugin 'leafgarland/typescript-vim'
-Plugin 'elzr/vim-json'
-" Plugin 'sheerun/vim-polyglot'
-"Plugin 'vhda/verilog_systemverilog.vim'
-Plugin 'luochen1990/rainbow'
+" Plugin 'jeaye/color_coded'
+" Plugin 'rdnetto/YCM-Generator'
+" Plugin 'w0rp/ale'
+" Plugin 'chrisbra/csv.vim'
 set updatetime=250
 
 
@@ -45,7 +46,24 @@ filetype plugin indent on    " required
 
 let g:rainbow_active = 1
 
-"for cpp colors
+"for powerline
+" let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_theme='simple'
+let g:airline_powerline_fonts = 1
+
+"for YCM
+let g:ycm_confirm_extra_conf = 0
+" let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+"let g:ycm_global_ycm_extra_conf = '/usr/share/vim/vimfiles/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 0
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_max_diagnostics_to_display = 500
+let g:ycm_goto_buffer_command = 'split'
+let g:ycm_path_to_python_interpreter='/usr/bin/python3'
+"look into UltiSnips
+
 " let g:cpp_class_scope_highlight = 1
 " let g:cpp_member_variable_highlight = 1
 " let g:cpp_class_decl_highlight = 1
@@ -63,24 +81,6 @@ let g:rainbow_active = 1
 " let g:ale_linters_explicit = 1
 
 " let g:ale_verilog_verilator_options= '-sv --default-language "1800-2017"'
-
-"for powerline
-" let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline_theme='powerlineish'
-let g:airline_powerline_fonts = 1
-
-"for YCM
-let g:ycm_confirm_extra_conf = 0
-" let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
-"let g:ycm_global_ycm_extra_conf = '/usr/share/vim/vimfiles/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 0
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_max_diagnostics_to_display = 500
-let g:ycm_goto_buffer_command = 'split'
-let g:ycm_path_to_python_interpreter='/usr/bin/python3'
-"look into UltiSnips
 
 "for anyfold
 filetype plugin indent on
@@ -103,7 +103,7 @@ syntax enable
 	"if file already open use :b partOfFileName
 
 "TAG Jumping
-command! MakeTags !ctags -R .
+" command! MakeTags !ctags -R .
 	"may need to apt-get the ctags
 	"use ^] to jump to tag under cursor
 	"use g^] for ambiguous tags
@@ -123,7 +123,7 @@ command! MakeTags !ctags -R .
 " let g:netrw_banner=0	"disabel annoying banner
 " let g:netrw_browse_split=4 	"open in prior window
 " let g:netrw_altv=1	"open lplits to the right
-let g:netrw_liststyle=3	"tree view
+" let g:netrw_liststyle=3	"tree view
 "let g:netrw_list_hide=netrw_gitignore#Hide()
 "let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 	"now we can
@@ -167,3 +167,11 @@ imap kjkj <ESC>
 "setlocal spell spelllang=en_us
 "search for selected
 vnoremap // y/<C-R>"<CR> 
+
+"for gitgutter
+let g:gitgutter_override_sign_column_highlight = 0
+highlight clear SignColumn
+highlight GitGutterAdd ctermfg=2
+highlight GitGutterChange ctermfg=3
+highlight GitGutterDelete ctermfg=1
+highlight GitGutterChangeDelete ctermfg=4"for cpp colors
