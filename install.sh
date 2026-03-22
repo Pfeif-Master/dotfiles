@@ -90,19 +90,9 @@ install_starship() {
         curl -sS https://starship.rs/install.sh | sh
     fi
 
-    # If repo doesn't have starship.toml yet, pull in whatever is on disk
-    if [ ! -f "$SURFACE/starship.toml" ]; then
-        if [ -f "$HOME/.config/starship.toml" ]; then
-            cp "$HOME/.config/starship.toml" "$SURFACE/starship.toml"
-            log "Captured existing starship.toml into repo — commit it when happy"
-        else
-            warn "No starship.toml found in repo or on disk — you'll need to create one"
-        fi
-    fi
-
-    if [ -f "$SURFACE/starship.toml" ]; then
-        make_link "$SURFACE/starship.toml" "$HOME/.config/starship.toml"
-    fi
+    # starship.toml lives in the repo — make_link handles backup of any existing config
+    mkdir -p "$HOME/.config"
+    make_link "$SURFACE/starship.toml" "$HOME/.config/starship.toml"
 
     # Add init line to .bashrc if missing
     if ! grep -q "starship init bash" "$HOME/.bashrc"; then
