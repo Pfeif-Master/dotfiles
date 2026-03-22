@@ -7,6 +7,7 @@ case $- in
       *) return;;
 esac
 
+# --- Color definitions (PS1-safe, wrapped in \[...\]) ---
 export YELLOW="\[\033[1;33m\]"
 export GREEN="\[\033[1;32m\]"
 export CYAN="\[\033[1;36m\]"
@@ -14,6 +15,7 @@ export BLUE="\[\033[1;34m\]"
 export RED="\[\033[1;31m\]"
 export COLOREND="\[\033[m\]"
 
+# --- Color definitions (for echo -e, no \[...\] wrappers) ---
 export E_YELLOW="\033[1;33m"
 export E_GREEN="\033[1;32m"
 export E_CYAN="\033[1;36m"
@@ -21,41 +23,40 @@ export E_BLUE="\033[1;34m"
 export E_RED="\033[1;31m"
 export E_COLOREND="\033[m"
 
-#start greeter
-#~/art1.sh
- echo -ne "${E_GREEN}"
- cat ~/dotfiles/surface/art1
-# echo -e "${E_GREEN}システムスタート${E_COLOREND}"
-# echo -e "\t\t\t\t${E_CYAN}何お${E_GREEN}シ"
-# echo -e "\t\t\t\t${E_CYAN}をか${E_GREEN}ス"
-# echo -e "\t\t\t\t${E_CYAN}しえ${E_GREEN}テ"
-# echo -e "\t\t\t\t${E_CYAN}たり${E_GREEN}ム"
-# echo -e "\t\t\t\t${E_CYAN}い  ${E_GREEN}ス"
-# echo -e "\t\t\t\t${E_CYAN}で  ${E_GREEN}タ"
-# echo -e "\t\t\t\t${E_CYAN}す  ${E_GREEN}ー"
-# echo -e "\t\t\t\t${E_CYAN}か  ${E_GREEN}ト"
-echo -ne "${E_COLOREND}"
+# --- Greeter ---
+source ~/dotfiles/surface/art1
+# --- End Greeter ---
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
+# History settings
+HISTCONTROL=ignoreboth
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# Check window size after each command
 shopt -s checkwinsize
 
-#prompt
-source ~/posh-git-sh/git-prompt.sh
-PROMPT_COMMAND='__posh_git_ps1 "${GREEN}\u${COLOREND}の${CYAN}\h🐾${COLOREND}" "${YELLOW}\w\n\[\033[m\]${YELLOW}Ϣ  \[\033[m\]";'$PROMPT_COMMAND
+# Append history instead of overwriting
+shopt -s histappend
 
-# PROMPT_COMMAND='__posh_git_ps1 "\033[1;36m\u⚔ \033[1;32m@\h⛩ \033[m" " \033[1;33m\w \nϢ  \[\033[m\]";'$PROMPT_COMMAND
+# Make less friendlier for non-text input
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-alias cp="cp -i"                          # confirm before overwriting something
+# --- Prompt ---
+# posh-git removed — swap in Starship
+PS1="${GREEN}\u${COLOREND}の${CYAN}\h🐾${COLOREND} ${YELLOW}\w${COLOREND}\n${YELLOW}Ϣ  ${COLOREND}"
+eval "$(starship init bash)"
+
+# --- Aliases ---
+alias cp="cp -i"                          # confirm before overwriting
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
-alias np='nano -w PKGBUILD'
 alias ls='ls --color=auto'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias ginit='git init; git ci --allow-empty -m "INIT COMIT"'
-alias py='python3'
 
 alias ..="cd ../"
 alias ...="cd ../../"
@@ -65,22 +66,17 @@ alias ......="cd ../../../../../"
 alias .......="cd ../../../../../../"
 
 alias g="git"
-alias meow="source ~/.bashrc"
-# alias python="python3"
-# alias pip="pip3"
+alias ginit='git init; git commit --allow-empty -m "INIT COMMIT"'
+alias py='python3'
 
+alias meow="source ~/.bashrc"
 alias edit_bash="vim ~/.bashrc"
 alias edit_vim="vim ~/_vimrc"
 alias edit_git="vim ~/.gitconfig"
 
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Enable history appending instead of overwriting.  #139609
-shopt -s histappend
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
+# --- Programmable completion ---
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -89,8 +85,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# # ex - archive extractor
-# # usage: ex <file>
+# --- Archive extractor: ex <file> ---
 ex ()
 {
   if [ -f $1 ] ; then
@@ -113,6 +108,7 @@ ex ()
   fi
 }
 
+# --- Color chart utility ---
 function colors {
 	local fgc bgc vals seq0
 
@@ -121,16 +117,12 @@ function colors {
 	printf "Values 40..47 are \e[43mbackground colors\e[m\n"
 	printf "Value  1 gives a  \e[1mbold-faced look\e[m\n\n"
 
-	# foreground colors
 	for fgc in {30..37}; do
-		# background colors
 		for bgc in {40..47}; do
-			fgc=${fgc#37} # white
-			bgc=${bgc#40} # black
-
+			fgc=${fgc#37}
+			bgc=${bgc#40}
 			vals="${fgc:+$fgc;}${bgc}"
 			vals=${vals%%;}
-
 			seq0="${vals:+\e[${vals}m}"
 			printf "  %-9s" "${seq0:-(default)}"
 			printf " ${seq0}TEXT\e[m"
@@ -140,11 +132,8 @@ function colors {
 	done
 }
 
+# --- mkdir + cd ---
 function mkdird {
 	mkdir $1
 	cd $1
 }
-
-##finsh greeter
-#echo -e "${E_CYAN}おかえり"
-#echo -e "何をしたいですか${E_COLOREND}"
