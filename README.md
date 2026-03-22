@@ -15,11 +15,11 @@ ai should edit readme and checkbox off completed task
 create auto install script:
  - [x] ask if starship is wanted
     - [x] if yes, install starship and symlink in starship config
-    - [ ] add starship config to repo
+    - [x] add starship config to repo
     -   as in commit the starship.toml to dotfiles/surface
  - [x] asks if you want to apt install additional packages
-   - explian in co-work how the syntax works here install_packages()
-   - [ ] the script should ask for each grouping if its wanted.
-     - where in the script does it ask user on each group?
+   - explained in cowork: flush_group() calls confirm() once per [group] block
+   - [x] the script should ask for each grouping if its wanted.
+     - flush_group() is called each time a new [header] is hit while parsing
    - [x] groups should be in the config list file to keep script modifiable
 
