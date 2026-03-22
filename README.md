@@ -13,18 +13,13 @@ ai should edit readme and checkbox off completed task
 # Nym's goal
 
 create auto install script:
- - [x] replaces ~/ items with softlink to ~/dotfile/surface.
- - [x] if there was an original dot file on system, copy it into ~/.orginal_dots
-before making the symlink
- - [x] clone vundle into vim
  - [x] ask if starship is wanted
     - [x] if yes, install starship and symlink in starship config
-    - [x] add starship config to repo
+    - [ ] add starship config to repo
+    -   as in commit the starship.toml to dotfiles/surface
  - [x] asks if you want to apt install additional packages
-   - [x] lets have the script pull packages to install from a config list file in this repo
-   - [x] the script should ask for each grouping if its wanted.
+   - explian in co-work how the syntax works here install_packages()
+   - [ ] the script should ask for each grouping if its wanted.
+     - where in the script does it ask user on each group?
    - [x] groups should be in the config list file to keep script modifiable
-   - [x] initial groups to add
-     - [x] python rich
-     - [x] dependencies to finish installing ycm with c and rust family completions
 
