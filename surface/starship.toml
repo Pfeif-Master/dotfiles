@@ -2,8 +2,8 @@
 # FoxDen prompt config
 
 format = """
-$username[の](white)$hostname$directory$git_branch$git_status
-[Ϣ  ](#FFB700 bold)"""
+$username[の](white)$hostname$directory$git_branch$git_status$python
+[猫](#FFB700 bold)"""
 
 add_newline = false
 
@@ -64,7 +64,9 @@ disabled = true
 disabled = true
 
 [python]
-disabled = true
+disabled = false
+format = '[(\($virtualenv\) )]($style)'
+style = "bold #98C379"
 
 [rust]
 disabled = true

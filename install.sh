@@ -22,8 +22,9 @@ DOTFILES="$(cd "$(dirname "$0")" && pwd)"
 SURFACE="$DOTFILES/surface"
 BACKUP="$HOME/.original_dots"
 PACKAGES="$DOTFILES/packages.conf"
+FIRACODE_INSTALLED=0
 
-# --- Symlink helper ---
+# --- Symlink helper (used by install_starship) ---
 make_link() {
     local src="$1"
     local dst="$2"
@@ -34,29 +35,20 @@ make_link() {
     fi
 
     if [ -e "$dst" ]; then
-        mkdir -p "$BACKUP"
-        warn "Backing up: $dst → $BACKUP/"
-        cp -a "$dst" "$BACKUP/"
+        local backup_dst="$BACKUP/$(basename "$dst")"
+        if [ -e "$backup_dst" ]; then
+            warn "Backup already exists, skipping backup: $backup_dst"
+        else
+            mkdir -p "$BACKUP"
+            warn "Backing up: $dst → $BACKUP/"
+            cp -a "$dst" "$BACKUP/"
+        fi
         rm -rf "$dst"
     fi
 
-    # Ensure parent dir exists
     mkdir -p "$(dirname "$dst")"
     ln -s "$src" "$dst"
     log "Linked: $dst"
-}
-
-# --- Dotfiles ---
-link_dotfiles() {
-    echo ""
-    log "Linking dotfiles from $SURFACE..."
-
-    make_link "$SURFACE/.bashrc"     "$HOME/.bashrc"
-    make_link "$SURFACE/.gitconfig"  "$HOME/.gitconfig"
-
-    # _vimrc: link as both _vimrc (alias target) and .vimrc (vim default)
-    make_link "$SURFACE/_vimrc"      "$HOME/_vimrc"
-    make_link "$SURFACE/_vimrc"      "$HOME/.vimrc"
 }
 
 # --- Vundle ---
@@ -69,11 +61,23 @@ install_vundle() {
         return
     fi
 
+    log "Installing YCM build dependencies..."
+    sudo apt install -y build-essential cmake python3-dev python3-setuptools clangd
+
     log "Cloning Vundle..."
     git clone https://github.com/VundleVim/Vundle.vim.git "$vundle_dir"
     log "Running :PluginInstall (this may take a moment)..."
     vim +PluginInstall +qall
     log "Vundle plugins installed"
+
+    local ycm_dir="$HOME/.vim/bundle/YouCompleteMe"
+    if [ -d "$ycm_dir" ]; then
+        log "Compiling YouCompleteMe (clangd + rust + python)..."
+        python3 "$ycm_dir/install.py" --clangd-completer --rust-completer
+        log "YCM compiled"
+    else
+        warn "YCM directory not found after PluginInstall — skipping compile"
+    fi
 }
 
 # --- Starship ---
@@ -103,6 +107,58 @@ install_starship() {
     fi
 }
 
+# --- FiraCode Nerd Font ---
+_is_wsl() { grep -qi microsoft /proc/version 2>/dev/null; }
+
+install_firacode() {
+    echo ""
+    if ! confirm "Install FiraCode Nerd Font?"; then
+        return
+    fi
+
+    local font_dir
+    if _is_wsl; then
+        local win_user
+        win_user=$(cmd.exe /c "echo %USERNAME%" 2>/dev/null | tr -d '\r\n')
+        if [ -z "$win_user" ]; then
+            warn "Could not detect Windows username — skipping font install"
+            return
+        fi
+        font_dir="/mnt/c/Users/$win_user/AppData/Local/Microsoft/Windows/Fonts"
+    else
+        font_dir="$HOME/.local/share/fonts/FiraCode"
+    fi
+
+    if ls "$font_dir"/FiraCodeNerdFont*.ttf &>/dev/null 2>&1; then
+        log "FiraCode Nerd Font already installed"
+        return
+    fi
+
+    if ! command -v unzip &>/dev/null; then
+        log "Installing unzip..."
+        sudo apt install -y unzip
+    fi
+
+    local tmp
+    tmp=$(mktemp -d)
+    log "Downloading FiraCode Nerd Font..."
+    curl -fsSL "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip" \
+        -o "$tmp/FiraCode.zip"
+    unzip -q "$tmp/FiraCode.zip" -d "$tmp/FiraCode"
+
+    mkdir -p "$font_dir"
+    cp "$tmp/FiraCode/"*.ttf "$font_dir/"
+    rm -rf "$tmp"
+
+    if _is_wsl; then
+        FIRACODE_INSTALLED=1
+        log "Installed to $font_dir"
+    else
+        fc-cache -f "$font_dir"
+        log "Installed to $font_dir and font cache refreshed"
+    fi
+}
+
 # --- Packages ---
 install_packages() {
     echo ""
@@ -118,12 +174,15 @@ install_packages() {
     local group="" desc="" pkgs="" post=""
 
     flush_group() {
-        [ -z "$group" ] || [ -z "$pkgs" ] && return
+        [ -z "$group" ] && return
+        [ -z "$pkgs" ] && [ -z "$post" ] && return
         echo ""
         if confirm "[$group] $desc?"; then
-            log "Installing: $pkgs"
-            # shellcheck disable=SC2086
-            sudo apt install -y $pkgs
+            if [ -n "$pkgs" ]; then
+                log "Installing: $pkgs"
+                # shellcheck disable=SC2086
+                sudo apt install -y $pkgs
+            fi
             if [ -n "$post" ]; then
                 log "Running post-install for [$group]..."
                 eval "$post"
@@ -155,10 +214,22 @@ echo ""
 echo -e "${G}FoxDen Dotfile Installer${RST}"
 echo -e "${G}========================${RST}"
 
-link_dotfiles
-install_vundle
+echo ""
+log "Updating package lists and upgrading system packages..."
+sudo apt update && sudo apt upgrade -y
+
+bash "$DOTFILES/link.sh"
 install_starship
 install_packages
+install_firacode
+install_vundle
 
 echo ""
 log "All done. Open a new terminal or run: source ~/.bashrc"
+if [ "$FIRACODE_INSTALLED" -eq 1 ]; then
+    echo ""
+    warn "Font registration required:"
+    warn "  1. Open Explorer → %LOCALAPPDATA%\\Microsoft\\Windows\\Fonts"
+    warn "  2. Select all FiraCode TTFs → right-click → Install"
+    warn "  3. Set in Windows Terminal: Settings → your profile → Font face → FiraCode Nerd Font"
+fi
