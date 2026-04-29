@@ -159,6 +159,19 @@ install_firacode() {
     fi
 }
 
+# --- WSL utilities ---
+install_wsl_utils() {
+    _is_wsl || return
+    echo ""
+    if command -v wslview &>/dev/null; then
+        log "wslview already installed"
+        return
+    fi
+    log "WSL detected — installing wslu (wslview)..."
+    sudo apt install -y wslu
+    log "wslview installed"
+}
+
 # --- Packages ---
 install_packages() {
     echo ""
@@ -220,6 +233,7 @@ sudo apt update && sudo apt upgrade -y
 
 bash "$DOTFILES/link.sh"
 install_starship
+install_wsl_utils
 install_packages
 install_firacode
 install_vundle
