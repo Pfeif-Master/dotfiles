@@ -2,7 +2,7 @@
 # FoxDen prompt config
 
 format = """
-$username[の](white)$hostname$directory$git_branch$git_status$python
+$python$username[の](white)$hostname$directory$git_branch$git_status
 [猫](#FFB700 bold)"""
 
 add_newline = false
